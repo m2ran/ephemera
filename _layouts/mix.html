@@ -19,6 +19,8 @@ layout: default
     <iframe src="{{ page.link }}" width="100%" height="300" allow="autoplay" frameborder="0" scrolling="no"></iframe>
   </div>
 
+  <nav class="mix-toc" id="mix-toc"></nav>
+
   <div class="mix-content">
     {{ content }}
   </div>
@@ -126,6 +128,48 @@ layout: default
     margin: 2rem 0;
   }
 
+  .mix-toc {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #e8e8e8;
+  }
+
+  .mix-toc:empty {
+    display: none;
+  }
+
+  .mix-toc-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #777;
+    margin: 0 0 0.75rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .mix-toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mix-toc-item {
+    margin: 0.5rem 0;
+  }
+
+  .mix-toc-link {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+
+  .mix-toc-link:hover {
+    color: #0066cc;
+  }
+
   @media (max-width: 640px) {
     .mix {
       padding: 1rem 0.75rem;
@@ -136,3 +180,41 @@ layout: default
     }
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const content = document.querySelector('.mix-content');
+    const tocContainer = document.getElementById('mix-toc');
+    const headings = content.querySelectorAll('h2');
+
+    if (headings.length === 0) {
+      return;
+    }
+
+    const tocTitle = document.createElement('div');
+    tocTitle.className = 'mix-toc-title';
+    tocTitle.textContent = 'Contents';
+
+    const tocList = document.createElement('ul');
+    tocList.className = 'mix-toc-list';
+
+    headings.forEach((heading, index) => {
+      const id = 'toc-' + index;
+      heading.id = id;
+
+      const listItem = document.createElement('li');
+      listItem.className = 'mix-toc-item';
+
+      const link = document.createElement('a');
+      link.className = 'mix-toc-link';
+      link.href = '#' + id;
+      link.textContent = heading.textContent;
+
+      listItem.appendChild(link);
+      tocList.appendChild(listItem);
+    });
+
+    tocContainer.appendChild(tocTitle);
+    tocContainer.appendChild(tocList);
+  });
+</script>
