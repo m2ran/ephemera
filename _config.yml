@@ -12,9 +12,9 @@ kramdown:
 
 # Collections
 collections:
-  journal:
+  traces:
     output: true
-    permalink: /journal/:path/
+    permalink: /traces/:path/
   mixes:
     output: true
     permalink: /mixes/:path/
@@ -26,17 +26,17 @@ include:
   - _mixes/**/*.png
   - _mixes/**/*.gif
   - _mixes/**/*.webp
-  - _journal/**/*.jpg
-  - _journal/**/*.jpeg
-  - _journal/**/*.png
-  - _journal/**/*.gif
-  - _journal/**/*.webp
+  - _traces/**/*.jpg
+  - _traces/**/*.jpeg
+  - _traces/**/*.png
+  - _traces/**/*.gif
+  - _traces/**/*.webp
 
 # Defaults
 defaults:
   - scope:
       path: ""
-      type: "journal"
+      type: "traces"
     values:
       layout: "entry"
   - scope:
@@ -54,5 +54,5 @@ exclude:
   - uv.lock
   - .python-version
   - README.md
-  - _journal/template.md
+  - _traces/template.md
   - _mixes/template.md

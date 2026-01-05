@@ -2,7 +2,7 @@
 title: ''
 date: YYYY-MM-DD
 layout: entry
-image: /assets/journal/YYYY-MM-DD/photo.jpg
+image: /assets/traces/YYYY-MM-DD/photo.jpg
 ---
 
-Write your journal entry here...
+Write your traces entry here...

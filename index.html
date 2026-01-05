@@ -3,14 +3,14 @@ layout: default
 title: ephemera
 ---
 
-<div class="journal-home">
-  <header class="journal-header">
+<div class="traces-home">
+  <header class="traces-header">
     <h1>{{ site.title }}</h1>
     {% if site.description and site.description != "" %}
-    <p class="journal-description">{{ site.description }}</p>
+    <p class="traces-description">{{ site.description }}</p>
     {% endif %}
     {% if site.author and site.author_url %}
-    <p class="journal-author"><a href="{{ site.author_url }}" target="_blank" rel="noopener noreferrer">{{ site.author }}</a></p>
+    <p class="traces-author"><a href="{{ site.author_url }}" target="_blank" rel="noopener noreferrer">{{ site.author }}</a></p>
     {% endif %}
   </header>
 
@@ -36,10 +36,10 @@ title: ephemera
     {% endif %}
   </section>
 
-  <section class="journal-entries">
-    <h2>Journal</h2>
+  <section class="traces-entries">
+    <h2>Traces</h2>
 
-    {% assign sorted_entries = site.journal | sort: 'date' | reverse %}
+    {% assign sorted_entries = site.traces | sort: 'date' | reverse %}
     {% if sorted_entries.size > 0 %}
       <ul class="entry-list">
         {% for entry in sorted_entries %}
@@ -94,60 +94,60 @@ title: ephemera
     background-color: #F3F3F3;
   }
 
-  .journal-home {
+  .traces-home {
     max-width: 700px;
     margin: 0 auto;
     padding: 2rem 1rem;
   }
 
-  .journal-header {
+  .traces-header {
     text-align: center;
     margin-bottom: 3rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid #ddd;
   }
 
-  .journal-header h1 {
+  .traces-header h1 {
     margin: 0 0 0.5rem 0;
     font-size: 2rem;
     font-weight: 600;
   }
 
-  .journal-description {
+  .traces-description {
     color: #666;
     font-size: 0.95rem;
     margin: 0;
   }
 
-  .journal-author {
+  .traces-author {
     margin: 0.5rem 0 0 0;
     font-size: 0.9rem;
   }
 
-  .journal-author a {
+  .traces-author a {
     color: #666;
     text-decoration: none;
     transition: color 0.2s;
   }
 
-  .journal-author a:hover {
+  .traces-author a:hover {
     color: #0066cc;
   }
 
   .mixes-section,
-  .journal-entries,
+  .traces-entries,
   .scraps-section {
     margin-bottom: 3rem;
   }
 
   .mixes-section:last-child,
-  .journal-entries:last-child,
+  .traces-entries:last-child,
   .scraps-section:last-child {
     margin-bottom: 0;
   }
 
   .mixes-section h2,
-  .journal-entries h2,
+  .traces-entries h2,
   .scraps-section h2 {
     margin-bottom: 1rem;
     font-size: 1rem;
@@ -234,11 +234,11 @@ title: ephemera
   }
 
   @media (max-width: 640px) {
-    .journal-home {
+    .traces-home {
       padding: 1rem 0.75rem;
     }
 
-    .journal-header h1 {
+    .traces-header h1 {
       font-size: 1.75rem;
     }
 
