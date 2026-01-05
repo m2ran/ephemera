@@ -1,6 +1,6 @@
 ---
 title: 'wip: 仕事始めの日'
-date: 2025-01-05
+date: 2026-01-05
 layout: entry
 image:
 ---
