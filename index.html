@@ -6,7 +6,12 @@ title: ephemera
 <div class="journal-home">
   <header class="journal-header">
     <h1>{{ site.title }}</h1>
+    {% if site.description and site.description != "" %}
     <p class="journal-description">{{ site.description }}</p>
+    {% endif %}
+    {% if site.author and site.author_url %}
+    <p class="journal-author"><a href="{{ site.author_url }}" target="_blank" rel="noopener noreferrer">{{ site.author }}</a></p>
+    {% endif %}
   </header>
 
   <section class="mixes-section">
@@ -52,6 +57,36 @@ title: ephemera
       <p class="no-entries">No entries yet.</p>
     {% endif %}
   </section>
+
+  <section class="scraps-section">
+    <h2>Scraps</h2>
+    <ul class="scraps-list">
+      <li class="scraps-item">
+        <a href="https://m2r-an.hatenablog.com/" target="_blank" rel="noopener noreferrer" class="scraps-link">
+          gatariz (Hatena Blog)
+        </a>
+        <span class="scraps-description">年末にその年の10選を置く場所</span>
+      </li>
+      <li class="scraps-item">
+        <a href="https://riqt.github.io/link-like-resonance/" target="_blank" rel="noopener noreferrer" class="scraps-link">
+          Link-Like Resonance
+        </a>
+        <span class="scraps-description">蓮ノ空女学院スクールアイドルクラブの楽曲の意味的類似度が近い曲同士を検索・可視化するツール</span>
+      </li>
+      <li class="scraps-item">
+        <a href="https://script.google.com/macros/s/AKfycbxvpYS765I-CiSDFAvuU90IPdY884ILAdU_DaAE3T-02daET-cLnO7l2hjeNnC3cGHY/exec" target="_blank" rel="noopener noreferrer" class="scraps-link">
+          Card Search for "Link-Like System" (beta)
+        </a>
+        <span class="scraps-description">リンクラのカードボイスを検索するツール</span>
+      </li>
+      <li class="scraps-item">
+        <a href="https://note.com/meguangel/n/n9818d6732e04" target="_blank" rel="noopener noreferrer" class="scraps-link">
+          With×MEETS記録
+        </a>
+        <span class="scraps-description">With×MEETSの書き起こしを文字ベースで記録 (noteから移管予定)</span>
+      </li>
+    </ul>
+  </section>
 </div>
 
 <style>
@@ -84,18 +119,36 @@ title: ephemera
     margin: 0;
   }
 
+  .journal-author {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.9rem;
+  }
+
+  .journal-author a {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .journal-author a:hover {
+    color: #0066cc;
+  }
+
   .mixes-section,
-  .journal-entries {
+  .journal-entries,
+  .scraps-section {
     margin-bottom: 3rem;
   }
 
   .mixes-section:last-child,
-  .journal-entries:last-child {
+  .journal-entries:last-child,
+  .scraps-section:last-child {
     margin-bottom: 0;
   }
 
   .mixes-section h2,
-  .journal-entries h2 {
+  .journal-entries h2,
+  .scraps-section h2 {
     margin-bottom: 1rem;
     font-size: 1rem;
     font-weight: 600;
@@ -144,6 +197,40 @@ title: ephemera
     color: #888;
     font-style: italic;
     font-size: 0.9rem;
+  }
+
+  .scraps-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .scraps-item {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e8e8e8;
+  }
+
+  .scraps-item:last-child {
+    border-bottom: none;
+  }
+
+  .scraps-link {
+    color: #333;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.2s;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .scraps-link:hover {
+    color: #0066cc;
+  }
+
+  .scraps-description {
+    color: #888;
+    font-size: 0.85rem;
+    display: block;
   }
 
   @media (max-width: 640px) {

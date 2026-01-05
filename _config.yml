@@ -1,7 +1,8 @@
 # Jekyll configuration for ephemera
 title: "ephemera"
-description: "Daily journal and ephemeral moments"
-author: "nama8"
+description: ""
+author: "@m2r_an"
+author_url: "https://x.com/m2r_an"
 
 # Build settings
 theme: minima
