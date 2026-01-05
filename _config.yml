@@ -1,0 +1,32 @@
+# Jekyll configuration for ephemera
+title: "ephemera"
+description: "Daily journal and ephemeral moments"
+author: "nama8"
+
+# Build settings
+theme: minima
+markdown: kramdown
+
+# Collections
+collections:
+  journal:
+    output: true
+    permalink: /journal/:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "journal"
+    values:
+      layout: "entry"
+
+# Exclude from processing
+exclude:
+  - .venv/
+  - __pycache__/
+  - "*.py"
+  - pyproject.toml
+  - uv.lock
+  - .python-version
+  - README.md
