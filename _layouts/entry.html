@@ -26,6 +26,11 @@ layout: default
   </footer>
 </article>
 
+<nav class="section-nav" id="section-nav">
+  <button class="section-nav-btn section-nav-up" id="nav-up" title="Previous section">↑</button>
+  <button class="section-nav-btn section-nav-down" id="nav-down" title="Next section">↓</button>
+</nav>
+
 <style>
   body {
     background-color: #F3F3F3;
@@ -127,6 +132,57 @@ layout: default
     margin: 2rem 0;
   }
 
+  .section-nav {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    z-index: 100;
+  }
+
+  .section-nav-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #666;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .section-nav-btn:hover {
+    background: #0066cc;
+    color: #fff;
+    border-color: #0066cc;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+  }
+
+  .section-nav-btn:active {
+    transform: translateY(0);
+  }
+
+  .section-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .section-nav-btn:disabled:hover {
+    background: #fff;
+    color: #666;
+    border-color: #ddd;
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
   @media (max-width: 640px) {
     .journal-entry {
       padding: 1rem 0.75rem;
@@ -137,3 +193,58 @@ layout: default
     }
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const content = document.querySelector('.entry-content');
+    const navUp = document.getElementById('nav-up');
+    const navDown = document.getElementById('nav-down');
+    const sectionNav = document.getElementById('section-nav');
+    const headings = content.querySelectorAll('h2');
+
+    if (headings.length === 0) {
+      sectionNav.style.display = 'none';
+      return;
+    }
+
+    headings.forEach((heading, index) => {
+      heading.id = 'section-' + index;
+    });
+
+    function getCurrentSection() {
+      const scrollPos = window.scrollY + 100;
+      let currentIndex = -1;
+
+      headings.forEach((heading, index) => {
+        if (heading.offsetTop <= scrollPos) {
+          currentIndex = index;
+        }
+      });
+
+      return currentIndex;
+    }
+
+    function updateNavButtons() {
+      const currentIndex = getCurrentSection();
+      navUp.disabled = currentIndex <= 0;
+      navDown.disabled = currentIndex >= headings.length - 1;
+    }
+
+    navUp.addEventListener('click', function() {
+      const currentIndex = getCurrentSection();
+      if (currentIndex > 0) {
+        headings[currentIndex - 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    navDown.addEventListener('click', function() {
+      const currentIndex = getCurrentSection();
+      if (currentIndex < headings.length - 1) {
+        headings[currentIndex + 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+
+    window.addEventListener('scroll', updateNavButtons);
+    updateNavButtons();
+  });
+</script>
