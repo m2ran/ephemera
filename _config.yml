@@ -53,3 +53,5 @@ exclude:
   - uv.lock
   - .python-version
   - README.md
+  - _journal/template.md
+  - _mixes/template.md

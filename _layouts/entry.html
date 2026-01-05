@@ -3,7 +3,7 @@ layout: default
 ---
 <article class="journal-entry">
   <header class="entry-header">
-    <h1>{{ page.title }}</h1>
+    <h1 class="entry-title">{{ page.title }}</h1>
     {% if page.date %}
     <time class="entry-date" datetime="{{ page.date | date_to_xmlschema }}">
       {{ page.date | date: "%Y-%m-%d" }}
@@ -11,59 +11,97 @@ layout: default
     {% endif %}
   </header>
 
+  {% if page.image %}
+  <div class="entry-image">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" />
+  </div>
+  {% endif %}
+
   <div class="entry-content">
     {{ content }}
   </div>
 
   <footer class="entry-footer">
-    <p><a href="{{ '/' | relative_url }}">← Back to journal</a></p>
+    <p><a href="{{ '/' | relative_url }}">← Back to index</a></p>
   </footer>
 </article>
 
 <style>
+  body {
+    background-color: #F3F3F3;
+  }
+
   .journal-entry {
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto;
-    padding: 2rem;
-    line-height: 1.7;
+    padding: 2rem 1rem;
+    line-height: 1.6;
   }
 
   .entry-header {
-    border-bottom: 2px solid #333;
-    padding-bottom: 1rem;
     margin-bottom: 2rem;
   }
 
-  .entry-header h1 {
+  .entry-title {
     margin: 0 0 0.5rem 0;
-    font-size: 1.8rem;
+    font-size: 1.75rem;
     font-weight: 600;
+    line-height: 1.3;
   }
 
   .entry-date {
     color: #666;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    font-family: monospace;
+  }
+
+  .entry-image {
+    margin: 2rem 0;
+  }
+
+  .entry-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+  }
+
+  .entry-content {
+    margin: 2rem 0;
   }
 
   .entry-content h2 {
-    margin-top: 2.5rem;
-    margin-bottom: 1rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #ddd;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 600;
+    color: #777;
+    margin: 2.5rem 0 1rem 0;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid #e8e8e8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   .entry-content h3 {
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
-    color: #444;
-    font-size: 1.2rem;
+    font-size: 0.95rem;
     font-weight: 600;
+    color: #888;
+    margin: 1.5rem 0 0.5rem 0;
+  }
+
+  .entry-content ol {
+    padding-left: 1.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .entry-content li {
+    margin: 0.3rem 0;
+    color: #444;
   }
 
   .entry-content p {
-    margin: 0.75rem 0;
+    margin: 0.5rem 0;
+    color: #555;
+    line-height: 1.7;
   }
 
   .entry-content a {
@@ -76,28 +114,25 @@ layout: default
     border-bottom-color: #0066cc;
   }
 
-  .entry-content ol, .entry-content ul {
-    padding-left: 2rem;
-  }
-
   .entry-footer {
     margin-top: 3rem;
     padding-top: 1rem;
     border-top: 1px solid #ddd;
+    font-size: 0.9rem;
   }
 
   hr {
     border: none;
-    border-top: 2px solid #ddd;
-    margin: 2.5rem 0;
+    border-top: 1px solid #e0e0e0;
+    margin: 2rem 0;
   }
 
   @media (max-width: 640px) {
     .journal-entry {
-      padding: 1rem;
+      padding: 1rem 0.75rem;
     }
 
-    .entry-header h1 {
+    .entry-title {
       font-size: 1.5rem;
     }
   }
