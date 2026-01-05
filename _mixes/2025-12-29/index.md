@@ -1,17 +1,9 @@
 ---
 title: '105th Apr-Dec image mix "Two Seconds to Forever"'
 date: 2025-12-29
-layout: entry
----
-
-# 105th Apr-Dec image mix "Two Seconds to Forever" (2025/12/29)
-
----
-
-## Mix
-
-<iframe src="https://drive.google.com/file/d/1XVcMYnpMQKMEVpiD82fkw6q4sxFiuqRd/preview" width="100%" height="80" allow="autoplay" frameborder="0"></iframe>
-
+layout: mix
+link: https://drive.google.com/file/d/1XVcMYnpMQKMEVpiD82fkw6q4sxFiuqRd/preview
+image: cover.png
 ---
 
 ## Setlist
@@ -732,5 +724,3 @@ AURORA FLOWERの花言葉「永遠の輝き」
 鮮やかに咲いた花は、たとえ枯れても胸に残る
 時の針が進み続けても、記憶の中で永遠になる
 「幸せなこの瞬間を 忘れずに生きていこう」
-
----

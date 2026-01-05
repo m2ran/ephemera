@@ -6,12 +6,30 @@ author: "nama8"
 # Build settings
 theme: minima
 markdown: kramdown
+kramdown:
+  hard_wrap: true
 
 # Collections
 collections:
   journal:
     output: true
     permalink: /journal/:path/
+  mixes:
+    output: true
+    permalink: /mixes/:path/
+
+# Include static files in collections
+include:
+  - _mixes/**/*.jpg
+  - _mixes/**/*.jpeg
+  - _mixes/**/*.png
+  - _mixes/**/*.gif
+  - _mixes/**/*.webp
+  - _journal/**/*.jpg
+  - _journal/**/*.jpeg
+  - _journal/**/*.png
+  - _journal/**/*.gif
+  - _journal/**/*.webp
 
 # Defaults
 defaults:
@@ -20,6 +38,11 @@ defaults:
       type: "journal"
     values:
       layout: "entry"
+  - scope:
+      path: ""
+      type: "mixes"
+    values:
+      layout: "mix"
 
 # Exclude from processing
 exclude:

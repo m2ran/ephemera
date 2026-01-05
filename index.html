@@ -9,8 +9,30 @@ title: ephemera
     <p class="journal-description">{{ site.description }}</p>
   </header>
 
+  <section class="mixes-section">
+    <h2>Mixes</h2>
+
+    {% assign sorted_mixes = site.mixes | sort: 'date' | reverse %}
+    {% if sorted_mixes.size > 0 %}
+      <ul class="entry-list">
+        {% for mix in sorted_mixes %}
+          <li class="entry-item">
+            <time class="entry-item-date" datetime="{{ mix.date | date_to_xmlschema }}">
+              {{ mix.date | date: "%Y-%m-%d" }}
+            </time>
+            <a href="{{ mix.url | relative_url }}" class="entry-item-title">
+              {{ mix.title }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="no-entries">No mixes yet.</p>
+    {% endif %}
+  </section>
+
   <section class="journal-entries">
-    <h2>Journal Entries</h2>
+    <h2>Journal</h2>
 
     {% assign sorted_entries = site.journal | sort: 'date' | reverse %}
     {% if sorted_entries.size > 0 %}
@@ -58,6 +80,17 @@ title: ephemera
     margin: 0;
   }
 
+  .mixes-section,
+  .journal-entries {
+    margin-bottom: 3rem;
+  }
+
+  .mixes-section:last-child,
+  .journal-entries:last-child {
+    margin-bottom: 0;
+  }
+
+  .mixes-section h2,
   .journal-entries h2 {
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
