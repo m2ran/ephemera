@@ -11,12 +11,12 @@ layout: default
 
   {% if page.image %}
   <div class="mix-cover">
-    <img src="{{ page.image }}" alt="{{ page.title }} cover" />
+    <img src="{{ page.image | relative_url }}" alt="{{ page.title }} cover" />
   </div>
   {% endif %}
 
   <div class="mix-player">
-    <iframe src="{{ page.link }}" width="100%" height="80" allow="autoplay" frameborder="0"></iframe>
+    <iframe src="{{ page.link }}" width="100%" height="300" allow="autoplay" frameborder="0" scrolling="no"></iframe>
   </div>
 
   <div class="mix-content">

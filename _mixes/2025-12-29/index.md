@@ -3,7 +3,7 @@ title: '105th Apr-Dec image mix "Two Seconds to Forever"'
 date: 2025-12-29
 layout: mix
 link: https://drive.google.com/file/d/1XVcMYnpMQKMEVpiD82fkw6q4sxFiuqRd/preview
-image: cover.png
+image: /assets/mixes/2025-12-29/cover.png
 ---
 
 ## Setlist
