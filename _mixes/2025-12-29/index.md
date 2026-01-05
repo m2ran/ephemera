@@ -626,11 +626,10 @@ I wish I wish forever
 永遠になれたらいいな　このまま
 あの日ふたりで交わした誓いを胸の中に
 大切に守り続けよう　時の針がまわっても
-ラララ…
 
 ---
 
-## Notes:
+## Notes
 
 ### 01. SPARKLE DAYS / DayRe:
 卒業、入学、転入
