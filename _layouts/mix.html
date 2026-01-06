@@ -19,10 +19,9 @@ layout: default
   <iframe
     src="{{ page.link }}"
     width="100%"
-    height="200"
     allow="autoplay"
     frameborder="0"
-    style="border: none; direction: ltr;">
+    style="border: none; direction: ltr; aspect-ratio: {{ page.aspect_ratio | default: '16 / 9' }};">
   </iframe>
 </div>
 
