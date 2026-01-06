@@ -763,7 +763,7 @@ AURORA FLOWERの花言葉「永遠の輝き」
 ## Addenda
 [#pixel_garden](https://x.com/search?q=%23pixel_garden&src=typed_query) というイメージソングのイベントに感銘を受けて作成しました。文脈を離れ、透明になった曲が持つ強さと美しさ。それを恣意的に紡ぐことの暴力性を自覚しつつも、一つ一つの歌と向き合い、彼女たちの物語に照らして思索に耽る時間は、本当にかけがえのないものだと感じます。
 
-[Card Search for "Link-Like System" (beta)](https://script.google.com/macros/s/AKfycbxvpYS765I-CiSDFAvuU90IPdY884ILAdU_DaAE3T-02daET-cLnO7l2hjeNnC3cGHY/exec) を公開します。キーワード検索とかできて便利です。
+[Card Search for "Link-Like System" (beta)](https://script.google.com/macros/s/AKfycbxvpYS765I-CiSDFAvuU90IPdY884ILAdU_DaAE3T-02daET-cLnO7l2hjeNnC3cGHY/exec) を公開します。カードボイスの書き起こしが検索できます。キーワード検索とかできて便利です。
 
 > 今日のこともまた思い出になって、こんなことがあったねって思い返すことが出来る。何度も何度も引っ張り出すと、ボロボロになっちゃわないかなって思うけど、そこは、運動会の旗とは逆なんだ。引っ張り出さないでいると、他の思い出がたくさん増えて、引っ張り出さなくなって、放っておくとどんどんボロボロになって消えていくんだ…。うん、だから実は、わざと消そうとして、しまい込んだままのものもあるよ。でもそれは、凄く寂しいことだって分かったんだ。しまい込みたい思い出も、ボロボロになって消えていくことも。だからこれからは、引っ張り出したい思い出もたくさん作っていきたい！そう、今日みたいに！
 [チェリー♫ピクニック] 夕霧綴理 (特訓2回目ボイス)
