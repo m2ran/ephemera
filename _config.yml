@@ -4,6 +4,10 @@ description: ""
 author: "Twitter: @m2r_an"
 author_url: "https://x.com/m2r_an"
 
+# Site URL for absolute URLs (required for OGP)
+url: "https://m2ran.github.io"
+baseurl: "/ephemera"
+
 # Build settings
 theme: minima
 markdown: kramdown
