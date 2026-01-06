@@ -15,14 +15,33 @@ layout: default
   </div>
   {% endif %}
 
-<div class="mix-player" style="overflow: hidden; -webkit-overflow-scrolling: touch;">
+<style>
+  /* スマホ（幅480px以下）の時だけ適用される設定 */
+  @media screen and (max-width: 480px) {
+    .mix-player {
+      /* はみ出した分は隠す */
+      overflow: hidden;
+      width: 100%;
+    }
+    .mix-player iframe {
+      /* 1. 幅を強制的に600pxに広げる（ボタンを見せるため） */
+      width: 600px !important; 
+      /* 2. それを0.6倍に縮小して画面に収める */
+      transform: scale(0.6); 
+      transform-origin: top left;
+      /* 下の余白調整（縮小で空いてしまう場合） */
+      margin-bottom: -120px; 
+    }
+  }
+</style>
+<div class="mix-player">
   <iframe 
     src="{{ page.link }}"
     width="100%"
-    height="600"
+    height="300"
     allow="autoplay"
     frameborder="0"
-    style="border: none; overflow: auto;">
+    style="border: none;">
   </iframe>
 </div>
 
