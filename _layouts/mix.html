@@ -15,14 +15,14 @@ layout: default
   </div>
   {% endif %}
 
-<div class="mix-player" style="overflow: hidden; direction: rtl; -webkit-overflow-scrolling: touch;">
+<div class="mix-player" style="overflow-x: auto; direction: rtl; -webkit-overflow-scrolling: touch;">
   <iframe
     src="{{ page.link }}"
     width="100%"
     height="200"
     allow="autoplay"
     frameborder="0"
-    style="border: none; overflow: auto;">
+    style="border: none; direction: ltr;">
   </iframe>
 </div>
 
@@ -316,22 +316,17 @@ layout: default
     const navDown = document.getElementById('nav-down');
     const sectionNav = document.getElementById('section-nav');
     const h2Headings = content.querySelectorAll('h2');
-    const h3Headings = content.querySelectorAll('h3');
 
-    if (h2Headings.length === 0 && h3Headings.length === 0) {
+    if (h2Headings.length === 0) {
       sectionNav.style.display = 'none';
       return;
     }
 
-    h3Headings.forEach((heading, index) => {
-      heading.id = 'subsection-' + index;
-    });
-
-    function getCurrentSection(headingsList) {
+    function getCurrentSection() {
       const scrollPos = window.scrollY + 100;
       let currentIndex = -1;
 
-      headingsList.forEach((heading, index) => {
+      h2Headings.forEach((heading, index) => {
         if (heading.offsetTop <= scrollPos) {
           currentIndex = index;
         }
@@ -341,85 +336,24 @@ layout: default
     }
 
     function updateNavButtons() {
-      const hasH3 = h3Headings.length > 0;
-      const hasH2 = h2Headings.length > 0;
-      const currentH3Index = getCurrentSection(h3Headings);
-      const currentH2Index = getCurrentSection(h2Headings);
-
-      navUp.disabled = (!hasH3 && (!hasH2 || currentH2Index <= 0)) || (hasH3 && currentH3Index <= 0);
-      navDown.disabled = (!hasH3 && (!hasH2 || currentH2Index >= h2Headings.length - 1)) || (hasH3 && currentH3Index >= h3Headings.length - 1);
+      const currentIndex = getCurrentSection();
+      navUp.disabled = currentIndex <= 0;
+      navDown.disabled = currentIndex >= h2Headings.length - 1;
     }
 
-    let pressTimer = null;
-    let isLongPress = false;
-
-    function handleNavigation(direction) {
-      const useH2 = isLongPress;
-      const targetHeadings = useH2 ? h2Headings : h3Headings;
-
-      if (targetHeadings.length === 0) {
-        return;
+    navUp.addEventListener('click', function() {
+      const currentIndex = getCurrentSection();
+      if (currentIndex > 0) {
+        h2Headings[currentIndex - 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
+    });
 
-      const currentIndex = getCurrentSection(targetHeadings);
-      let targetIndex = -1;
-
-      if (direction === 'up') {
-        targetIndex = currentIndex > 0 ? currentIndex - 1 : 0;
-      } else {
-        targetIndex = currentIndex < targetHeadings.length - 1 ? currentIndex + 1 : targetHeadings.length - 1;
+    navDown.addEventListener('click', function() {
+      const currentIndex = getCurrentSection();
+      if (currentIndex < h2Headings.length - 1) {
+        h2Headings[currentIndex + 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-
-      if (targetIndex >= 0 && targetIndex < targetHeadings.length) {
-        targetHeadings[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-
-    function setupButton(button, direction) {
-      button.addEventListener('mousedown', function(e) {
-        e.preventDefault();
-        isLongPress = false;
-        pressTimer = setTimeout(function() {
-          isLongPress = true;
-          button.style.background = '#0066cc';
-          button.style.color = '#fff';
-        }, 500);
-      });
-
-      button.addEventListener('touchstart', function(e) {
-        isLongPress = false;
-        pressTimer = setTimeout(function() {
-          isLongPress = true;
-          button.style.background = '#0066cc';
-          button.style.color = '#fff';
-        }, 500);
-      });
-
-      button.addEventListener('mouseup', function(e) {
-        e.preventDefault();
-        clearTimeout(pressTimer);
-        handleNavigation(direction);
-        button.style.background = '';
-        button.style.color = '';
-      });
-
-      button.addEventListener('touchend', function(e) {
-        e.preventDefault();
-        clearTimeout(pressTimer);
-        handleNavigation(direction);
-        button.style.background = '';
-        button.style.color = '';
-      });
-
-      button.addEventListener('mouseleave', function() {
-        clearTimeout(pressTimer);
-        button.style.background = '';
-        button.style.color = '';
-      });
-    }
-
-    setupButton(navUp, 'up');
-    setupButton(navDown, 'down');
+    });
 
     window.addEventListener('scroll', updateNavButtons);
     updateNavButtons();
