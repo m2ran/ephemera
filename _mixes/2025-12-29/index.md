@@ -4,6 +4,7 @@ date: 2025-12-29
 layout: mix
 link: https://drive.google.com/file/d/1O9zwRDWePvhAY4Hqy6p-oHrRG5jMpGld/preview
 aspect_ratio: "4 / 3"
+ogp_image: /assets/mixes/2025-12-29/IMG_8056.png
 # image: /assets/mixes/2025-12-29/cover.png
 ---
 
