@@ -21,7 +21,8 @@ layout: default
     width="100%"
     allow="autoplay"
     frameborder="0"
-    style="border: none; direction: ltr; aspect-ratio: {{ page.aspect_ratio | default: '16 / 9' }};">
+    class="mix-player-iframe"
+    style="border: none; direction: ltr; --aspect-ratio: {{ page.aspect_ratio | default: '16 / 9' }};">
   </iframe>
 </div>
 
@@ -90,9 +91,10 @@ layout: default
     -webkit-overflow-scrolling: touch;
   }
 
-  .mix-player iframe {
+  .mix-player-iframe {
     display: block;
-    max-width: 100%;
+    width: 100%;
+    aspect-ratio: var(--aspect-ratio);
   }
 
   .mix-content {
