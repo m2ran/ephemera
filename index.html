@@ -15,9 +15,15 @@ title: ephemera
   </header>
 
   <section class="mixes-section">
-    <h2>Mixes</h2>
+    <div class="section-header">
+      <h2>Mixes</h2>
+      {% assign all_mixes = site.mixes | sort: 'date' | reverse %}
+      {% if all_mixes.size > 5 %}
+        <a href="{{ '/mixes.html' | relative_url }}" class="view-all-link">View all ({{ all_mixes.size }})</a>
+      {% endif %}
+    </div>
 
-    {% assign sorted_mixes = site.mixes | sort: 'date' | reverse %}
+    {% assign sorted_mixes = all_mixes | limit: 5 %}
     {% if sorted_mixes.size > 0 %}
       <ul class="entry-list">
         {% for mix in sorted_mixes %}
@@ -37,9 +43,15 @@ title: ephemera
   </section>
 
   <section class="traces-entries">
-    <h2>Traces</h2>
+    <div class="section-header">
+      <h2>Traces</h2>
+      {% assign all_traces = site.traces | sort: 'date' | reverse %}
+      {% if all_traces.size > 5 %}
+        <a href="{{ '/traces.html' | relative_url }}" class="view-all-link">View all ({{ all_traces.size }})</a>
+      {% endif %}
+    </div>
 
-    {% assign sorted_entries = site.traces | sort: 'date' | reverse %}
+    {% assign sorted_entries = all_traces | limit: 5 %}
     {% if sorted_entries.size > 0 %}
       <ul class="entry-list">
         {% for entry in sorted_entries %}
@@ -149,15 +161,37 @@ title: ephemera
     margin-bottom: 0;
   }
 
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1rem;
+  }
+
   .mixes-section h2,
   .traces-entries h2,
   .scraps-section h2 {
-    margin-bottom: 1rem;
+    margin: 0;
     font-size: 1rem;
     font-weight: 600;
     color: #777;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+  }
+
+  .scraps-section h2 {
+    margin-bottom: 1rem;
+  }
+
+  .view-all-link {
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: opacity 0.2s;
+  }
+
+  .view-all-link:hover {
+    opacity: 0.7;
   }
 
   .entry-list {
