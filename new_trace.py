@@ -41,7 +41,7 @@ def create_new_trace():
     print(f"  Date: {today}")
     print(f"\nNext steps:")
     print(f"  1. Edit {entry_file}")
-    print(f"  2. Add title and content")
+    print(f"  2. Add drive_file_id and drive_image_id (or use local files)")
     print(f"  3. (Optional) Add image to /assets/traces/{today}/")
 
 

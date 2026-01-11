@@ -53,14 +53,13 @@ title: ephemera
 
     {% assign sorted_entries = all_traces | limit: 5 %}
     {% if sorted_entries.size > 0 %}
-      <ul class="entry-list">
+      <ul class="entry-list traces-list">
         {% for entry in sorted_entries %}
           <li class="entry-item">
-            <time class="entry-item-date" datetime="{{ entry.date | date_to_xmlschema }}">
-              {{ entry.date | date: "%Y-%m-%d" }}
-            </time>
-            <a href="{{ entry.url | relative_url }}" class="entry-item-title">
-              {{ entry.title }}
+            <a href="{{ entry.url | relative_url }}" class="entry-item-date-link">
+              <time class="entry-item-date" datetime="{{ entry.date | date_to_xmlschema }}">
+                {{ entry.date | date: "%Y-%m-%d" }}
+              </time>
             </a>
           </li>
         {% endfor %}
@@ -230,6 +229,26 @@ title: ephemera
     color: #0066cc;
   }
 
+  .traces-list .entry-item {
+    padding: 0.5rem 0;
+  }
+
+  .entry-item-date-link {
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+
+  .traces-list .entry-item-date {
+    color: #666;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .entry-item-date-link:hover .entry-item-date {
+    color: #0066cc;
+  }
+
   .no-entries {
     color: #888;
     font-style: italic;
@@ -279,7 +298,7 @@ title: ephemera
       font-size: 1.75rem;
     }
 
-    .entry-item {
+    .mixes-section .entry-item {
       flex-direction: column;
       gap: 0.25rem;
     }

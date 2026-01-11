@@ -14,11 +14,10 @@ title: All Traces
     <ul class="entry-list">
       {% for entry in sorted_entries %}
         <li class="entry-item">
-          <time class="entry-item-date" datetime="{{ entry.date | date_to_xmlschema }}">
-            {{ entry.date | date: "%Y-%m-%d" }}
-          </time>
-          <a href="{{ entry.url | relative_url }}" class="entry-item-title">
-            {{ entry.title }}
+          <a href="{{ entry.url | relative_url }}" class="entry-item-date-link">
+            <time class="entry-item-date" datetime="{{ entry.date | date_to_xmlschema }}">
+              {{ entry.date | date: "%Y-%m-%d" }}
+            </time>
           </a>
         </li>
       {% endfor %}
@@ -74,32 +73,28 @@ title: All Traces
   }
 
   .entry-item {
-    padding: 0.75rem 0;
+    padding: 0.5rem 0;
     border-bottom: 1px solid #e8e8e8;
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
   }
 
   .entry-item:last-child {
     border-bottom: none;
   }
 
-  .entry-item-date {
-    color: #888;
-    font-size: 0.85rem;
-    font-family: monospace;
-    flex-shrink: 0;
-  }
-
-  .entry-item-title {
-    color: #333;
+  .entry-item-date-link {
     text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.2s;
+    display: inline-block;
+    transition: all 0.2s;
   }
 
-  .entry-item-title:hover {
+  .entry-item-date {
+    color: #666;
+    font-size: 1rem;
+    font-family: monospace;
+    font-weight: 500;
+  }
+
+  .entry-item-date-link:hover .entry-item-date {
     color: #0066cc;
   }
 
@@ -116,11 +111,6 @@ title: All Traces
 
     .page-header h1 {
       font-size: 1.5rem;
-    }
-
-    .entry-item {
-      flex-direction: column;
-      gap: 0.25rem;
     }
   }
 </style>
